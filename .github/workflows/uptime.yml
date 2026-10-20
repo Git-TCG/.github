@@ -1,0 +1,13 @@
+name: uptime
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record public uptime sample
+        run: curl -fsS --max-time 20 https://git-tcg.shxin.kr/api/uptime/probe
